@@ -33,7 +33,7 @@ const options:cors.CorsOptions = {
   calendar: {
     token: true
   },
-  httpPort: '192.168.41.2:' + (process.env.PORT || '8087')
+  httpPort: process.env.PORT || 8080
 })
 export class Server extends ServerLoader {
   /**
