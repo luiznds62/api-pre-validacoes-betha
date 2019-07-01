@@ -57,7 +57,7 @@ export class NeDBArquivo {
     });
   }
 
-  async findAllDocuments(): Promise<Arquivo[]> {
+  async findAllDocuments(){
     return new Promise((resolve, reject) => {
       db.find({})
         .sort({ dataGeracao: 1 })
@@ -71,7 +71,7 @@ export class NeDBArquivo {
     });
   }
 
-  async getById(id: string): Promise<Arquivo> {
+  async getById(id: string){
     return new Promise((resolve, reject) => {
       db.find({ _id: id })
         .sort({ dataGeracao: 1 })
@@ -85,7 +85,7 @@ export class NeDBArquivo {
     });
   }
 
-  async getByIdEntidade(idEntidade: string): Promise<Arquivo[]> {
+  async getByIdEntidade(idEntidade: string) {
     return new Promise((resolve, reject) => {
       db.find({ idEntidade: idEntidade })
         .sort({ dataGeracao: 1 })

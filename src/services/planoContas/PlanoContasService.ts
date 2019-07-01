@@ -13,11 +13,11 @@ export class PlanoContasService {
     return await this.neDBService.create(planocontas);
   }
 
-  async buscarTodos(): Promise<PlanoContas[]> {
+  async buscarTodos(){
     return await this.neDBService.findAllDocuments();
   }
 
-  async buscarPeloExercicio(exercicio: number): Promise<PlanoContas> {
+  async buscarPeloExercicio(exercicio: number) {
     return await this.neDBService.getByExercicio(exercicio);
   }
 

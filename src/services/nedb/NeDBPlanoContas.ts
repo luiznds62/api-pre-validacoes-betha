@@ -27,7 +27,7 @@ export class NeDBPlanoContas {
     });
   }
 
-  async findAllDocuments(): Promise<PlanoContas[]> {
+  async findAllDocuments() {
     return new Promise((resolve, reject) => {
       db.find({}).exec(function(err, docs) {
         if (err) {
@@ -39,7 +39,7 @@ export class NeDBPlanoContas {
     });
   }
 
-  async getByExercicio(exercicio: number): Promise<PlanoContas> {
+  async getByExercicio(exercicio: number) {
     return new Promise((resolve, reject) => {
       db.find({ exercicio: exercicio }).exec(function(err, doc) {
         if (err) {

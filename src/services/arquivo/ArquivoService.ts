@@ -20,23 +20,23 @@ export class ArquivoService {
     return await this.neDBService.createParagrafoCorrigido(uuid, paragrafoId);
   }
 
-  async buscarTodos(): Promise<Arquivo[]> {
+  async buscarTodos() {
     return await this.neDBService.findAllDocuments();
   }
 
-  async buscarPeloId(id: string): Promise<Arquivo> {
+  async buscarPeloId(id: string){
     return await this.neDBService.getById(id);
   }
 
-  async buscarPeloIdEntidade(idEntidade: string): Promise<Arquivo[]> {
+  async buscarPeloIdEntidade(idEntidade: string) {
     return await this.neDBService.getByIdEntidade(idEntidade);
   }
 
-  async buscarPeloUUID(uuid: string): Promise<Arquivo> {
+  async buscarPeloUUID(uuid: string){
     return await this.neDBService.getByUUID(uuid);
   }
 
-  async buscarPorChave(parametros: string): Promise<Arquivo[]> {
+  async buscarPorChave(parametros: string) {
     return await this.neDBService.getByChave(parametros);
   }
 
