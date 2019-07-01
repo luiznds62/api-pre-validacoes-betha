@@ -99,7 +99,7 @@ export class NeDBArquivo {
     });
   }
 
-  async getByUUID(uUID: string): Promise<Arquivo> {
+  async getByUUID(uUID: string){
     return new Promise((resolve, reject) => {
       db.find({ uuid: uUID })
         .sort({ dataGeracao: 1 })
@@ -113,7 +113,7 @@ export class NeDBArquivo {
     });
   }
 
-  async getByChave(parametros: string): Promise<Arquivo[]> {
+  async getByChave(parametros: string){
     return new Promise((resolve, reject) => {
       db.find({ chave: parametros }).exec(function(err, docs) {
         if (err) {
@@ -129,7 +129,7 @@ export class NeDBArquivo {
     parametros: string,
     quantidadeRegistros: number,
     ordenacao: number
-  ): Promise<Arquivo[]> {
+  ){
     return new Promise((resolve, reject) => {
       db.find({ chave: parametros })
         .sort({ dataGeracao: ordenacao })

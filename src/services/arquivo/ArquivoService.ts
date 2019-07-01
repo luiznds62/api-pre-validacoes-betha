@@ -24,7 +24,7 @@ export class ArquivoService {
     return await this.neDBService.findAllDocuments();
   }
 
-  async buscarPeloId(id: string){
+  async buscarPeloId(id: string) {
     return await this.neDBService.getById(id);
   }
 
@@ -32,7 +32,7 @@ export class ArquivoService {
     return await this.neDBService.getByIdEntidade(idEntidade);
   }
 
-  async buscarPeloUUID(uuid: string){
+  async buscarPeloUUID(uuid: string) {
     return await this.neDBService.getByUUID(uuid);
   }
 
@@ -44,7 +44,7 @@ export class ArquivoService {
     parametros: string,
     quantidadeRegistros: number,
     ordenacao: number
-  ): Promise<Arquivo[]> {
+  ) {
     return await this.neDBService.getByChaveLimit(
       parametros,
       quantidadeRegistros,
