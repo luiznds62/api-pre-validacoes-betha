@@ -16,7 +16,13 @@ const compress = require("compression");
 const methodOverride = require("method-override");
 const rootDir = __dirname;
 const options = {
-    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+    allowedHeaders: [
+        "Origin",
+        "X-Requested-With",
+        "Content-Type",
+        "Accept",
+        "X-Access-Token"
+    ],
     credentials: true,
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
     origin: "*",
@@ -28,8 +34,7 @@ let Server = class Server extends common_1.ServerLoader {
      * @returns {Server}
      */
     $onMountingMiddlewares() {
-        this
-            .use(common_1.GlobalAcceptMimesMiddleware)
+        this.use(common_1.GlobalAcceptMimesMiddleware)
             .use(cors(options))
             .use(cookieParser())
             .use(compress({}))
@@ -52,12 +57,23 @@ Server = __decorate([
         rootDir,
         acceptMimes: ["application/json"],
         mount: {
-            '/api': `${rootDir}/**/*Ctrl.ts`
+            "/api": `${rootDir}/**/*Ctrl.ts`
         },
+        componentsScan: [
+            `${rootDir}/services/**/**.ts`
+        ],
         logger: {
             debug: false,
             logRequest: true,
-            requestFields: ["reqId", "method", "url", "headers", "query", "params", "duration"]
+            requestFields: [
+                "reqId",
+                "method",
+                "url",
+                "headers",
+                "query",
+                "params",
+                "duration"
+            ]
         },
         swagger: {
             path: "/api-docs"
