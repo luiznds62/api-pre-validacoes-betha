@@ -36,6 +36,20 @@ export class ArquivoCtrl {
       });
   }
 
+  @Post("/desenvolvimento")
+  async cadastrarArquivo2(@BodyParams() arquivoDto: ArquivoDTO) {
+    var arquivo = await arquivoDto.toDB();
+    const path = require("path");
+    const fs = require("fs");
+    fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}`), arquivo.textoHtml, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+
+      console.log("The file was saved!");
+    });
+  }
+
   @Post("/tabelaCorrigida/:uuid/:tableId")
   async cadastrarTabelaCorrigida(
     @PathParams("uuid") @Required() uuid: string,

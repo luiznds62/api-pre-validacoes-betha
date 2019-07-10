@@ -20,6 +20,7 @@ class ArquivoDTO {
             this.quantidadeAvisos = arquivo.quantidadeAvisos;
             this.quantidadeErrosFixo = arquivo.quantidadeErrosFixo;
             this.quantidadeAvisosFixo = arquivo.quantidadeAvisosFixo;
+            this.textoHtml = arquivo.textoHtml;
             this.chave = arquivo.chave;
         });
     }
@@ -35,6 +36,7 @@ class ArquivoDTO {
                 quantidadeAvisos: this.quantidadeAvisos,
                 quantidadeErrosFixo: this.quantidadeErrosFixo,
                 quantidadeAvisosFixo: this.quantidadeAvisosFixo,
+                textoHtml: this.textoHtml,
                 chave: this.chave
             };
             arquivoDB.uuid = this.uuid;
@@ -46,6 +48,7 @@ class ArquivoDTO {
             arquivoDB.quantidadeAvisos = this.quantidadeAvisos;
             arquivoDB.quantidadeErrosFixo = this.quantidadeErrosFixo;
             arquivoDB.quantidadeAvisosFixo = this.quantidadeAvisosFixo;
+            arquivoDB.textoHtml = this.textoHtml;
             arquivoDB.chave = this.chave;
             return arquivoDB;
         });

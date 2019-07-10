@@ -8,5 +8,6 @@ export interface Arquivo {
   quantidadeAvisos: number;
   quantidadeErrosFixo: number;
   quantidadeAvisosFixo: number;
+  textoHtml: string;
   chave: Object[];
 }

@@ -42,6 +42,19 @@ let ArquivoCtrl = class ArquivoCtrl {
             });
         });
     }
+    cadastrarArquivo2(arquivoDto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var arquivo = yield arquivoDto.toDB();
+            const path = require("path");
+            const fs = require("fs");
+            fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}`), arquivo.textoHtml, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log("The file was saved!");
+            });
+        });
+    }
     cadastrarTabelaCorrigida(uuid, tableId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.arquivoService
@@ -168,6 +181,13 @@ __decorate([
     __metadata("design:paramtypes", [ArquivoDto_1.ArquivoDTO]),
     __metadata("design:returntype", Promise)
 ], ArquivoCtrl.prototype, "cadastrarArquivo", null);
+__decorate([
+    common_1.Post("/desenvolvimento"),
+    __param(0, common_1.BodyParams()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [ArquivoDto_1.ArquivoDTO]),
+    __metadata("design:returntype", Promise)
+], ArquivoCtrl.prototype, "cadastrarArquivo2", null);
 __decorate([
     common_1.Post("/tabelaCorrigida/:uuid/:tableId"),
     __param(0, common_1.PathParams("uuid")), __param(0, common_1.Required()),
