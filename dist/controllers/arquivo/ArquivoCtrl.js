@@ -42,17 +42,16 @@ let ArquivoCtrl = class ArquivoCtrl {
             });
         });
     }
-    cadastrarArquivo2(arquivoDto) {
+    retornarPagina(uuid) {
         return __awaiter(this, void 0, void 0, function* () {
-            var arquivo = yield arquivoDto.toDB();
-            const path = require("path");
-            const fs = require("fs");
-            fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}`), arquivo.textoHtml, function (err) {
-                if (err) {
-                    return console.log(err);
-                }
-                console.log("The file was saved!");
+            var arquivo = yield this.arquivoService.buscarPeloUUID(uuid);
+            var fs = require("fs");
+            var stream = fs.createWriteStream(`${arquivo[0].uuid}.html`);
+            stream.once("open", function (fd) {
+                stream.write(arquivo[0].textoHtml);
+                stream.end();
             });
+            return stream;
         });
     }
     cadastrarTabelaCorrigida(uuid, tableId) {
@@ -182,12 +181,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ArquivoCtrl.prototype, "cadastrarArquivo", null);
 __decorate([
-    common_1.Post("/desenvolvimento"),
-    __param(0, common_1.BodyParams()),
+    common_1.Get("/html/:uuid"),
+    __param(0, common_1.PathParams("uuid")), __param(0, common_1.Required()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [ArquivoDto_1.ArquivoDTO]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], ArquivoCtrl.prototype, "cadastrarArquivo2", null);
+], ArquivoCtrl.prototype, "retornarPagina", null);
 __decorate([
     common_1.Post("/tabelaCorrigida/:uuid/:tableId"),
     __param(0, common_1.PathParams("uuid")), __param(0, common_1.Required()),

@@ -36,25 +36,16 @@ export class ArquivoCtrl {
       });
   }
 
-  @Post("/desenvolvimento")
-  async cadastrarArquivo2(@BodyParams() arquivoDto: ArquivoDTO) {
-    var arquivo = await arquivoDto.toDB();
+  @Get("/html/:uuid")
+  async retornarPagina(@PathParams("uuid") @Required() uuid: string) {
+    var arquivo = await this.arquivoService.buscarPeloUUID(uuid);
     var fs = require("fs");
-    var stream = fs.createWriteStream(`${arquivo.uuid}.html`);
+    var stream = fs.createWriteStream(`${arquivo[0].uuid}.html`);
     stream.once("open", function(fd) {
-      stream.write(arquivo.textoHtml);
+      stream.write(arquivo[0].textoHtml);
       stream.end();
     });
     return stream
-    // const path = require("path");
-    // const fs = require("fs");
-    // fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}.html`), arquivo.textoHtml, function(err) {
-    //   if (err) {
-    //     return console.log(err);
-    //   }
-
-    //   console.log("The file was saved!");
-    // });
   }
 
   @Post("/tabelaCorrigida/:uuid/:tableId")
