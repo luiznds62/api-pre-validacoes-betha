@@ -41,7 +41,7 @@ export class ArquivoCtrl {
     var arquivo = await arquivoDto.toDB();
     const path = require("path");
     const fs = require("fs");
-    fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}`), arquivo.textoHtml, function(err) {
+    fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}.html`), arquivo.textoHtml, function(err) {
       if (err) {
         return console.log(err);
       }
