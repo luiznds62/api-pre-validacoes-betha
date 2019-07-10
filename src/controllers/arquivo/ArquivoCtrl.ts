@@ -39,15 +39,22 @@ export class ArquivoCtrl {
   @Post("/desenvolvimento")
   async cadastrarArquivo2(@BodyParams() arquivoDto: ArquivoDTO) {
     var arquivo = await arquivoDto.toDB();
-    const path = require("path");
-    const fs = require("fs");
-    fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}.html`), arquivo.textoHtml, function(err) {
-      if (err) {
-        return console.log(err);
-      }
-
-      console.log("The file was saved!");
+    var fs = require("fs");
+    var stream = fs.createWriteStream(`${arquivo.uuid}.html`);
+    stream.once("open", function(fd) {
+      stream.write(arquivo.textoHtml);
+      stream.end();
     });
+    return stream
+    // const path = require("path");
+    // const fs = require("fs");
+    // fs.writeFile(path.resolve(`./resources/files/${arquivo.uuid}.html`), arquivo.textoHtml, function(err) {
+    //   if (err) {
+    //     return console.log(err);
+    //   }
+
+    //   console.log("The file was saved!");
+    // });
   }
 
   @Post("/tabelaCorrigida/:uuid/:tableId")
