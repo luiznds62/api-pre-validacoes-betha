@@ -45,13 +45,7 @@ let ArquivoCtrl = class ArquivoCtrl {
     retornarPagina(uuid) {
         return __awaiter(this, void 0, void 0, function* () {
             var arquivo = yield this.arquivoService.buscarPeloUUID(uuid);
-            var fs = require("fs");
-            var stream = fs.createWriteStream(`${arquivo[0].uuid}.html`);
-            stream.once("open", function (fd) {
-                stream.write(arquivo[0].textoHtml);
-                stream.end();
-            });
-            return stream;
+            return arquivo[0].textoHtml;
         });
     }
     cadastrarTabelaCorrigida(uuid, tableId) {

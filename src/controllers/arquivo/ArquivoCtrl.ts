@@ -39,13 +39,7 @@ export class ArquivoCtrl {
   @Get("/html/:uuid")
   async retornarPagina(@PathParams("uuid") @Required() uuid: string) {
     var arquivo = await this.arquivoService.buscarPeloUUID(uuid);
-    var fs = require("fs");
-    var stream = fs.createWriteStream(`${arquivo[0].uuid}.html`);
-    stream.once("open", function(fd) {
-      stream.write(arquivo[0].textoHtml);
-      stream.end();
-    });
-    return stream
+    return arquivo[0].textoHtml;
   }
 
   @Post("/tabelaCorrigida/:uuid/:tableId")

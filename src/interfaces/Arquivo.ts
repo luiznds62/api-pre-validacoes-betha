@@ -1,5 +1,7 @@
 export interface Arquivo {
   uuid: string;
+  nome: string;
+  usuario: string;
   idEntidade: string;
   tabelaCorrigida: Object[];
   paragrafoCorrigido: Object[];

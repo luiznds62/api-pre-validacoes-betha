@@ -3,6 +3,8 @@ import { Exception } from "../common/Exception";
 
 export class ArquivoDTO {
   uuid: string;
+  nome: string;
+  usuario: string;
   idEntidade: string;
   tabelaCorrigida: Object[];
   paragrafoCorrigido: Object[];
@@ -16,6 +18,8 @@ export class ArquivoDTO {
 
   async fromDB(arquivo: Arquivo) {
     this.uuid = arquivo.uuid;
+    this.nome = arquivo.nome;
+    this.usuario = arquivo.usuario;
     this.idEntidade = arquivo.idEntidade;
     this.tabelaCorrigida = arquivo.tabelaCorrigida;
     this.paragrafoCorrigido = arquivo.paragrafoCorrigido;
@@ -31,6 +35,8 @@ export class ArquivoDTO {
   async toDB(): Promise<Arquivo> {
     var arquivoDB: Arquivo = {
       uuid: this.uuid,
+      nome: this.nome,
+      usuario: this.usuario,
       idEntidade: this.idEntidade,
       tabelaCorrigida: this.tabelaCorrigida,
       paragrafoCorrigido: this.paragrafoCorrigido,
@@ -44,6 +50,8 @@ export class ArquivoDTO {
     };
 
     arquivoDB.uuid = this.uuid;
+    arquivoDB.nome = this.nome;
+    arquivoDB.usuario = this.usuario;
     arquivoDB.idEntidade = this.idEntidade;
     arquivoDB.tabelaCorrigida = this.tabelaCorrigida;
     arquivoDB.paragrafoCorrigido = this.paragrafoCorrigido;

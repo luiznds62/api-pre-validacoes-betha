@@ -12,6 +12,8 @@ class ArquivoDTO {
     fromDB(arquivo) {
         return __awaiter(this, void 0, void 0, function* () {
             this.uuid = arquivo.uuid;
+            this.nome = arquivo.nome;
+            this.usuario = arquivo.usuario;
             this.idEntidade = arquivo.idEntidade;
             this.tabelaCorrigida = arquivo.tabelaCorrigida;
             this.paragrafoCorrigido = arquivo.paragrafoCorrigido;
@@ -28,6 +30,8 @@ class ArquivoDTO {
         return __awaiter(this, void 0, void 0, function* () {
             var arquivoDB = {
                 uuid: this.uuid,
+                nome: this.nome,
+                usuario: this.usuario,
                 idEntidade: this.idEntidade,
                 tabelaCorrigida: this.tabelaCorrigida,
                 paragrafoCorrigido: this.paragrafoCorrigido,
@@ -40,6 +44,8 @@ class ArquivoDTO {
                 chave: this.chave
             };
             arquivoDB.uuid = this.uuid;
+            arquivoDB.nome = this.nome;
+            arquivoDB.usuario = this.usuario;
             arquivoDB.idEntidade = this.idEntidade;
             arquivoDB.tabelaCorrigida = this.tabelaCorrigida;
             arquivoDB.paragrafoCorrigido = this.paragrafoCorrigido;
